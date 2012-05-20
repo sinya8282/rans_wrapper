@@ -1,0 +1,29 @@
+LL scripts wrapper arround the RANS using SWIG (currentaly Python only).
+
+To install Python wrapper
+$ python setup.py build_ext --inplace
+$ python setup.py install
+$ python
+
+Use in Python
+$ python
+Python 2.7.1 (r271:86832, Jun 16 2011, 16:59:05)
+[GCC 4.2.1 (Based on Apple Inc. build 5658) (LLVM build 2335.15.00)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import rans
+>>> r = rans.compile("a*(b*|c*)")
+>>> r.accept("aaaaaabbb")
+True
+>>> r("aaaaabbb")
+69
+>>> r(69)
+'aaaaabbb'
+>>> r("not acceptable string")
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "rans.py", line 83, in __call__
+    return self.val(*args) if isinstance(args[0], str) else self.rep(*args)
+  File "rans.py", line 84, in val
+    def val(self, *args): return int(_rans.compile_val(self, *args))
+IndexError: invalid text: text is not acceptable.
+>>> 
