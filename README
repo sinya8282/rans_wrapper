@@ -3,7 +3,6 @@ LL scripts wrapper arround the RANS using SWIG (currentaly Python only).
 To install Python wrapper
 $ python setup.py build_ext --inplace
 $ python setup.py install
-$ python
 
 Use in Python
 $ python
